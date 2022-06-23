@@ -1,0 +1,9 @@
+{
+  "ok": "ok",
+  "user":{
+    "notfound": "User not found."
+  },
+  "credential":{
+    "invalid" : "Invalid credentials"
+  }
+}
