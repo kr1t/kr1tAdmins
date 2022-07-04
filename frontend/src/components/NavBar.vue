@@ -28,10 +28,10 @@ const logoutUser = async () => {
             </button>
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-            <div class="text-sm lg:flex-grow">
-                <RouterLink class="menu-link" :to="{ name: 'image' }">
-                    Image Generate
-                </RouterLink>
+            <div class="text-sm lg:flex-grow text-white mt-1 hover:text-black">
+                <button class="icon-btn mx-2 !outline-none" @click="toggleDark()">
+                    <div i="carbon-sun dark:carbon-moon" />
+                </button>
             </div>
             <div v-if="user">
                 <a href="#" class="inline-block text-sm px-4 py-2 leading-none  rounded text-white mt-4 lg:mt-0">

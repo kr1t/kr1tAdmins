@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     KButton: typeof import('./components/KButton.vue')['default']
     LineLiff: typeof import('./components/LineLiff.vue')['default']
     Navbar: typeof import('./components/Navbar.vue')['default']
+    NavBar: typeof import('./components/NavBar.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
