@@ -1,8 +1,8 @@
 <template>
   <main>
-    <Navbar />
+    <AdminNavbar />
     <div>
-      <Sidebar class="sidebar" />
+      <AdminSidebar class="sidebar" />
       <div class="view">
         <RouterView />
       </div>

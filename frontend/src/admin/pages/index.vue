@@ -11,4 +11,5 @@ import { useAuthStore } from '~/store/auth'
 <route lang="yaml">
 meta:
   middleware: [auth]
+  layout: admin
 </route>

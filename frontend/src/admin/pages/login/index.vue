@@ -7,7 +7,7 @@ const router = useRouter()
 const formSubmit = async () => {
   const { isSuccess, status } = await submit()
   if (isSuccess)
-    router.push({ name: 'index' })
+    router.push({ name: 'admin' })
 }
 </script>
 
@@ -38,5 +38,5 @@ const formSubmit = async () => {
 
 <route lang="yaml">
 meta:
-  middleware: [guest]
+  middleware: [adminGuest]
 </route>

@@ -32,6 +32,10 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
+      dirs: [
+        { dir: 'src/pages', baseRoute: '' },
+        { dir: 'src/admin/pages', baseRoute: 'admin' },
+      ],
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -59,6 +63,9 @@ export default defineConfig({
     Components({
       // allow auto load markdown components under `./src/components/`
       extensions: ['vue', 'md'],
+      dirs: ['src/components', 'src/admin/components'],
+      directoryAsNamespace: true,
+
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',

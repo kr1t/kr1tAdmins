@@ -7,7 +7,7 @@ const { makeQr, makeBarcode } = useMakeImage()
 </script>
 
 <template>
-    <line-liff name="arm">
+    <div>
         <div class="flex flex-wrap mt-5">
             <div class="w-1/2 p-4">
                 <div
@@ -40,7 +40,7 @@ const { makeQr, makeBarcode } = useMakeImage()
                 </div>
             </div>
         </div>
-    </line-liff>
+    </div>
 </template>
 
 <style module>
@@ -56,6 +56,7 @@ const { makeQr, makeBarcode } = useMakeImage()
 
 <route lang="yaml">
 meta:
-  middleware: [auth]
+  middleware: [admin]
+  layout: admin
 </route>
 
