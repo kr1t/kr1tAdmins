@@ -1,9 +1,9 @@
 <template>
   <main>
     <AdminNavbar />
-    <div>
+    <div class="flex">
       <AdminSidebar class="sidebar" />
-      <div class="view">
+      <div class="view w-full m-5">
         <RouterView />
       </div>
     </div>

@@ -6,11 +6,14 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AdminNavbar: typeof import('./admin/components/AdminNavbar.vue')['default']
+    AdminSearch: typeof import('./admin/components/AdminSearch.vue')['default']
     AdminSidebar: typeof import('./admin/components/AdminSidebar.vue')['default']
+    AdminSimpleTable: typeof import('./admin/components/AdminSimpleTable.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     KButton: typeof import('./components/KButton.vue')['default']
     LineLiff: typeof import('./components/LineLiff.vue')['default']
+    Pagination: typeof import('./components/Pagination.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
