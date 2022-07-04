@@ -5,11 +5,15 @@ import { string } from '@ioc:Adonis/Core/Helpers'
 
 import QRCode from 'qrcode'
 import Barcode from 'barcode'
+import generatePlaceholderImage from 'generate-placeholder-image'
 
 import QrValidator from 'App/Validators/Utils/Image/QrValidator'
 import BarcodeValidator from 'App/Validators/Utils/Image/BarcodeValidator'
 
-export default class ImageController {
+import BaseController from 'App/Controllers/Http/BaseController'
+import console from 'App/Helpers/ConsoleHelper'
+
+export default class ImageController extends BaseController {
   generateImageDraft() {
     let qrPath = Application.tmpPath('utils/image')
     let fileName = `${string.generateRandom(10)}.png`
@@ -23,6 +27,8 @@ export default class ImageController {
   }
   async qr({ response, request }: HttpContext) {
     await request.validate(QrValidator)
+    // await console.success('validatePass', 'Daborn')
+
     const { text, width = 250 } = request.all()
 
     let imageDraft = this.generateImageDraft()
@@ -68,4 +74,39 @@ export default class ImageController {
       return response.status(404)
     }
   }
+  async placeholder({ response, request }: HttpContext) {
+    await request.validate(QrValidator)
+    await console.success('validatePass', 'Dabornz')
+
+    const { text, width = 250 } = request.all()
+
+    let imageDraft = this.generateImageDraft()
+    const { filePath, fileName } = imageDraft
+
+    try {
+
+      await new Promise((resolve) => {
+        generatePlaceholderImage({
+          width: 300,
+          height: 300,
+          r: 255,
+          g: 255,
+          b: 0,
+          text,
+          output: filePath
+        })
+        resolve()
+      })
+
+
+      const read = await imageDraft.readableStream()
+      await imageDraft.deleteFile()
+
+      return response.stream(read)
+    } catch (err) {
+      console.log(err)
+      return response.status(404)
+    }
+  }
+
 }

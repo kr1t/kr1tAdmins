@@ -1,12 +1,16 @@
-import axios from "axios"
-import { useAuthStore } from "@/stores/auth"
+import axios from 'axios'
+import { useAuthStore } from '~/store/auth'
 
-axios.defaults.baseURL = "http://127.0.0.1:3333"
+const { getEnv } = useEnv()
+const apiUrl = getEnv('VITE_API_URL')
+
+axios.defaults.baseURL = apiUrl
 axios.interceptors.request.use((request) => {
   const { token } = useAuthStore()
-  if (token) {
+
+  if (token)
     request.headers.common.Authorization = `Bearer ${token}`
-  }
+
   return request
 })
 

@@ -1,25 +1,21 @@
 import HttpContext from '@ioc:Adonis/Core/HttpContext'
 
-import HttpContext from '@ioc:Adonis/Core/HttpContext'
 import HtmlPDF from 'html-pdf'
 import axios from 'axios'
-export default class PdfController {
-  async convertFromHtml({ response }: HttpContext) {
-    let url = 'http://help.websiteos.com/websiteos/example_of_a_simple_html_page.htm'
+import PdfConvertHtmlValidator from 'App/Validators/Utils/Pdf/ConvertHtmlValidator'
 
+export default class PdfController {
+  async fetchHtmlAsText(url) {
+    const { data } = await axios.get(url)
+    return data
+  }
+
+  async convertFromHtml({ request, response }: HttpContext) {
+    const { url } = await request.validate(PdfConvertHtmlValidator)
     // const { data: html } = await axios.get(url)
 
-    let html = `<html>
-  <head>
-    <title>Href Attribute Example</title>
-  </head>
-  <body>
-    <h1>Href Attribute Example</h1>
-    <p>
-      <a href="https://www.freecodecamp.org/contribute/">The freeCodeCamp Contribution Page</a> shows you how and where you can contribute to freeCodeCamp's community and growth.
-    </p>
-  </body>
-</html>`
+    let html = await this.fetchHtmlAsText(url)
+
     // return html
     let toStream = await new Promise((resolve, reject) => {
       HtmlPDF.create(html).toStream(function (err, stream) {

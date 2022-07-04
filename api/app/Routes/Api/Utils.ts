@@ -8,6 +8,8 @@ export default () => {
     Route.group(() => {
       ImageUtilsRoute.get().link('qr')
       ImageUtilsRoute.get().link('barcode')
+      ImageUtilsRoute.get().link('placeholder')
+
     }).prefix('/image')
     // image
     let PdfUtilsRoute = RouteHelper.controller('Utils/Pdf')
