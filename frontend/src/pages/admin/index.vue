@@ -4,7 +4,7 @@ import { useAuthStore } from '~/store/auth'
 
 <template>
   <div>
-    Home Page
+    Dashboard
   </div>
 </template>
 
