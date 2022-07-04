@@ -53,7 +53,7 @@ class RouteHelper {
     let { $controller } = this
     return this.template(path, $controller, path)
   }
-  crud(path = '/') {
+  crud(path = '') {
     let { $controller } = this
     return Route.resource(path, `${$controller}Controller`)
   }
