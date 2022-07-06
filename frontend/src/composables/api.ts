@@ -42,3 +42,22 @@ export const useApiUtils = () => {
 
   return { useMakeImage }
 }
+
+export const useIndexPayload = (func) => {
+  const query = ref({
+    page: 1,
+    q: "",
+  })
+
+  const pageChange = (payload) => {
+    query.page = payload
+    func(query)
+  }
+  const search = (payload) => {
+    query.q = payload
+    query.page = 1
+    func(query)
+  }
+
+  return { pageChange, search }
+}

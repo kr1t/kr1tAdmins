@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import BaseController from 'App/Controllers/Http/BaseController'
 import Tag from 'App/Models/Tag'
+import { encrypt } from 'App/Helpers/useEncrypt'
 export default class TagController extends BaseController {
   async index({ request, response }: HttpContextContract) {
     const { page = 1, perPage = 20, orderBy = 'desc', q } = request.all()
@@ -18,7 +19,8 @@ export default class TagController extends BaseController {
       message: this.$t('ok'),
       results: {
         tags,
-        q,
+        e: encrypt('qdw'),
+        ed: Tag.dd(),
       },
     })
   }

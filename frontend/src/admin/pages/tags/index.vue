@@ -9,35 +9,22 @@ const columns = [
   { key: "created_at", name: "Created At" },
 ];
 
-const query = ref({
-  page: 1,
-  q: "",
-});
-
-fetchTags(query);
-
-const showMore = (payload) => {
-  query.page = payload;
-  fetchTags(query);
-};
-const search = (payload) => {
-  query.q = payload;
-  query.page = 1;
-  fetchTags(query);
-};
+const { pageChange, search } = useIndexPayload(fetchTags);
+search();
 </script>
 
 <template>
   <div>
     <div class="relative overflow-x-auto bg-gray sm:rounded-lg">
       <AdminSearch @searchInput="search" />
+      <RouterLink :to="{ name: '' }"> <button>Create</button> </RouterLink>
       <AdminSimpleTable :rows="tags.data" :columns="columns" />
     </div>
 
     <Pagination
       :meta="tags.meta"
       :has-more-pages="true"
-      @pagechanged="showMore"
+      @pageChange="pageChange"
     ></Pagination>
   </div>
 </template>

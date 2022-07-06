@@ -237,19 +237,19 @@ export default {
 
   methods: {
     onClickFirstPage() {
-      this.$emit("pagechanged", 1);
+      this.$emit("pageChange", 1);
     },
     onClickPreviousPage() {
-      this.$emit("pagechanged", this.currentPage - 1);
+      this.$emit("pageChange", this.currentPage - 1);
     },
     onClickPage(page) {
-      this.$emit("pagechanged", page);
+      this.$emit("pageChange", page);
     },
     onClickNextPage() {
-      this.$emit("pagechanged", this.currentPage + 1);
+      this.$emit("pageChange", this.currentPage + 1);
     },
     onClickLastPage() {
-      this.$emit("pagechanged", this.totalPages);
+      this.$emit("pageChange", this.totalPages);
     },
     isPageActive(page) {
       return this.currentPage === page;
