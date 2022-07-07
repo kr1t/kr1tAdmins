@@ -72,6 +72,7 @@
     "qrcode": "^1.5.0",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21",
-    "stream": "^0.0.2"
+    "stream": "^0.0.2",
+    "string-crypto": "^2.0.2"
   }
 }
